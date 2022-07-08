@@ -1,6 +1,6 @@
-import Home from "./pages";
 import GlobalStyle from "./styles/globalStyles";
 import React from "react";
+import {Home} from "./pages";
 
 function App(): JSX.Element {
   return (
