@@ -1,1 +1,1 @@
-export { UserPreview } from "./user-preview";
+export {UserPreview} from './user-preview';

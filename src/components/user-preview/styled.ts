@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled from 'styled-components/macro';
 
 export const UserPreviewContainer = styled.div`
   display: flex;
@@ -18,4 +18,5 @@ export const UserPreviewAvatar = styled.img`
 `;
 
 export const UserPreviewName = styled.p`
+    text-transform: capitalize;
 `;

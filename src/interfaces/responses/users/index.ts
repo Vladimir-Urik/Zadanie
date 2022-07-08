@@ -1,4 +1,4 @@
-import {IUserPreview} from "../../user-preview";
+import {IUserPreview} from '../../general/user-preview';
 
 export interface IUsersResponse {
     data: IUserPreview[],

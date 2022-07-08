@@ -1,1 +1,1 @@
-export type { IUsersResponse } from "./users";
+export type {IUsersResponse} from './users';
