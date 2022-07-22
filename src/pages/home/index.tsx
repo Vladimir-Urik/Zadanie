@@ -7,19 +7,14 @@ import {getUsers} from '../../services';
 import {Outlet} from 'react-router-dom';
 
 export const Home: React.FC = () => {
-  const [total, setTotal] = useState(null);
-  const [page, setPage] = useState(0);
-  const [users, setUsers] = useState([]);
+  const [total, setTotal] = useState<number>(null);
+  const [users, setUsers] = useState<IUserPreview[]>([]);
 
   const load = () => {
-    if (total != null) {
-      const maxPage = (total/10);
-      if ((page) > maxPage) return;
-    }
+    if (total == users.length) return;
 
-    getUsers(page).then((data) => {
+    getUsers(users.length/10).then((data) => {
       setUsers((users) => [...users, ...data.data]);
-      setPage((page) => page+1);
       setTotal(data.total);
     }).catch((e) => {
       console.error(e);
@@ -36,7 +31,7 @@ export const Home: React.FC = () => {
         style={{height: '100vh', width: '300px'}}
         data={users}
         endReached={load}
-        itemContent={(index, user: IUserPreview) => {
+        itemContent={(_index: number, user: IUserPreview) => {
           return <UserPreview
             id={user.id}
             title={user.title}
