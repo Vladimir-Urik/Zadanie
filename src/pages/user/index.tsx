@@ -1,24 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import {getUser} from '../../services';
-import {IUser} from '../../interfaces/general';
+import {ILocation, IUser} from '../../interfaces/general';
 import {UserAvatar, UserLocationContainer} from './styled';
 import {formatDate} from '../../utils';
 
 export const User: React.FC = () => {
   const {id} = useParams();
-  const [loading, setLoading] = useState(true);
+
   const [user, setUser] = useState<IUser>(null);
+  const [location, setLocation] = useState<ILocation>(null);
+
   useEffect(() => {
     getUser(id).then((user) => {
       setUser(user);
-      setLoading(false);
+      setLocation(user.location);
     }).catch((e) => {
       console.error(e);
     });
   }, [id]);
 
-  if (loading) {
+  if (user == null || location == null) {
     return <>Loading...</>;
   }
 
